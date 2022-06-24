@@ -1,28 +1,32 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { faker } from "@faker-js/faker";
-
-if (module.hot) {
-  module.hot.accept();
-}
+import CommentDetail from './CommentDetail';
+import ApprovalCard from './ApprovalCard';
 
 const App = () => {
   return (
     <div className="ui container comments">
-      <div className="comment">
-        <a href="/" className="avatar">
-            <img alt="avatar" src={faker.image.image()} />
-        </a>
-        <div className="content">
-          <a href="/" className="author">
-            Sam
-          </a>
-          <div className="metadata">
-            <span className="date">Today at 6:00PM</span>
-          </div>
-          <div className="text">Nice blog post!</div>
-        </div>
-      </div>
+        <ApprovalCard>
+            <CommentDetail
+                author={faker.name.firstName()}
+                timeAgo="Today at 4:45pm"
+                comment={faker.random.words()}
+                avatar={faker.image.avatar()}
+            />
+        </ApprovalCard>
+        <CommentDetail
+            author={faker.name.firstName()}
+            timeAgo="Today at 2:00m"
+            comment={faker.random.words()}
+            avatar={faker.image.avatar()}
+        />
+        <CommentDetail
+            author={faker.name.firstName()}
+            timeAgo="Yesterday at 7:00am"
+            comment={faker.random.words()}
+            avatar={faker.image.avatar()}
+        />
     </div>
   );
 };
